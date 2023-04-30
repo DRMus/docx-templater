@@ -1,0 +1,50 @@
+.docxHeader {
+  border: 1px solid #000;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.docxHeaderItem {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.docxContentBox {
+  padding: 0;
+  padding-left: 1.5rem;
+}
+
+.docxInput {
+  display: inline-block;
+  margin: 0;
+}
+
+.innerOl {
+  margin-left: 2rem;
+}
+
+.docxP {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: .5rem;
+  margin-left: 1rem;
+}
+
+.docxOl {
+  counter-reset: section;           
+  list-style-type: none;
+  li::before {
+    counter-increment: section;     
+    content: counters(section,".") ") ";
+  }
+}
+
+.dBlock {
+  display: block;
+}

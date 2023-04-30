@@ -17,13 +17,13 @@ const MainView = () => {
 
   return (
     <MainContextProvider>
-      <Layout style={{ height: "100%" }}>
+      <Layout style={{ height: "100%" }} hasSider>
         <Sider
           collapsible
           collapsed={collapsed}
           width={150}
           breakpoint="lg"
-          collapsedWidth={isSiderBreakpoint ? "0" : "60px"}
+          collapsedWidth={"0"}
           onBreakpoint={(broken) => {
             setIsSiderBreakpoint(broken);
           }}
@@ -32,18 +32,27 @@ const MainView = () => {
               setCollapsed(value);
             }
           }}
+          style={{
+            height: "100vh",
+            position: "fixed",
+            left: 0,
+            top: 0,
+            bottom: 0,
+            zIndex: 100,
+          }}
         >
           <SiderContent />
         </Sider>
-        <Layout style={{ position: "relative" }}>
+        <Layout style={{ position: "relative", overflow: "auto", height: "100%" }}>
           <Header style={{ padding: 0, background: "white" }} />
-          <Content style={{ margin: "24px 16px 0" }}>
+          <Content style={{ margin: "24px 16px 0", height: "fit-content" }}>
             <DocxContent />
+            <Footer style={{ textAlign: "center", opacity: 0.5 }}>
+              ULSTU ©2023 Created by Bondarenko D.D. & Muslimov D.R.
+            </Footer>
           </Content>
-          <Footer style={{ textAlign: "center", opacity: 0.5 }}>
-            ULSTU ©2023 Created by Bondarenko D.D. & Muslimov D.R.
-          </Footer>
-          {!collapsed && <div className={styles.darkBlock} />}
+
+          {!collapsed && <div className={styles.darkBlock} onClick={() => setCollapsed(true)} />}
         </Layout>
       </Layout>
     </MainContextProvider>
