@@ -1,0 +1,19 @@
+.darkBlock {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.5;
+  background-color: #000;
+  animation: opacityAnim 333ms ease-in-out;
+}
+
+@keyframes opacityAnim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
