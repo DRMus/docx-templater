@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
-
-import { DatePicker, Form, Input } from "antd";
+import { useContext } from "react";
+import { Form } from "antd";
 import { MainContextValue } from "../Main/MainContext";
 
 import styles from "./DocxContent.module.scss";
@@ -12,7 +11,7 @@ const DocxContent = () => {
   const { formRef, onSubmit } = useContext(MainContextValue);
   return (
     <div style={{ padding: 24, minHeight: 360, background: "white", fontSize: "14px" }}>
-      <Form onFinish={onSubmit} ref={formRef} style={{maxWidth: 1300, margin: "0 auto"}}>
+      <Form onFinish={onSubmit} ref={formRef} style={{ maxWidth: 1300, margin: "0 auto" }}>
         <div className={styles.docxHeader}>
           <DocxP className={styles.docxHeaderItem}>
             <span>Отчет куратора</span>
@@ -259,9 +258,148 @@ const DocxContent = () => {
                       </DocxP>
                     </li>
                     <li>
-                    Кол-во неаттестованных студентов по итогам текущей аттестации (Не более 5% от общего кол-ва студентов)
+                      Кол-во неаттестованных студентов по итогам текущей аттестации (Не более 5% от
+                      общего кол-ва студентов)
                     </li>
-                    <li>Кол-во неаттестованных студентов по итогам промежуточной аттестации (сессия).	Не более 30% от общего кол-ва студентов.</li>
+                    <li>
+                      <b>Кол-во неаттестованных студентов по итогам промежуточной аттестации (сессия).
+                      Не более 30% от общего кол-ва студентов.</b>
+                    </li>
+                  </DocxOl>
+                </li>
+              </DocxOl>
+            </li>
+            <li>
+              Организационная работа со студентами
+              <DocxOl className={styles.innerOl}>
+                <li>
+                  Организация медицинского осмотра
+                  <DocxOl className={styles.innerOl}>
+                    <li>
+                      Кол-во студентов, прошедших медицинского осмотра (100% от общего кол-ва
+                      студентов. В период прохождения медицинского осмотра)
+                      <DocxP>
+                        Собраны и переданы в медицинского осмотра медицинские справки 100 %
+                        студентов
+                      </DocxP>
+                    </li>
+                  </DocxOl>
+                </li>
+                <li>
+                  Организация постановки на воинский учет
+                  <DocxOl className={styles.innerOl}>
+                    <li>
+                      Кол-во студентов, подлежащих воинскому учёту
+                      <DocxP>
+                        Студенты группы <b>[Группа из оглавления]</b> в объеме{" "}
+                        <FormItemInput name="number_li_3_2_1_idx0" type="number" placeholder="" />%
+                        встали на воинский учет.
+                      </DocxP>
+                    </li>
+                  </DocxOl>
+                </li>
+              </DocxOl>
+            </li>
+            <li>
+              Воспитательная работа со студентами
+              <DocxOl className={styles.innerOl}>
+                <li>
+                  Участие студентов в мероприятиях, организованных Департаментом по работе с
+                  молодежью и связям с общественностью»
+                  <DocxOl className={styles.innerOl}>
+                    <li>
+                      Кол-во студентов, участвующих «Посвящении в первокурсники» (90% от общего
+                      кол-ва студентов)
+                      <DocxP>
+                        <FormItemInput
+                          name="number_li_4_1_1_idx0"
+                          type="number"
+                          placeholder="Чел"
+                        />{" "}
+                        студента приняли участи в «Посвящении в первокурсники»
+                      </DocxP>
+                    </li>
+                    <li>
+                      Кол-во студентов, участвующих Дебюте первокурсника (Не менее 20% от общего
+                      кол-ва студентов, только для 1 курса)
+                      <DocxP>
+                        <FormItemInput
+                          name="number_li_4_1_2_idx0"
+                          type="number"
+                          placeholder="Чел"
+                        />{" "}
+                        студентов приняли участи в «Дебюте первокурсника»
+                      </DocxP>
+                    </li>
+                    <li>
+                      Другие мероприятия на усмотрение деканата (оцениваются в конце семестра - доп.
+                      Поощрение куратору)
+                      <DocxP>См. пункт 5</DocxP>
+                    </li>
+                  </DocxOl>
+                </li>
+                <li>
+                  Участие в спортивно-массовых мероприятиях
+                  <DocxOl className={styles.innerOl}>
+                    <li>
+                      Кол-во студентов, участвующих в Спартакиаде первокурсников
+                      <DocxP>
+                        Спартакиада первокурсников в{" "}
+                        <FormItemInput name="text_li_4_2_1_idx0" type="text" placeholder="Месяц" />{" "}
+                        не проводилась
+                      </DocxP>
+                    </li>
+                    <li>
+                      Кол-во студентов-членов сборной команды (Не менее 2-х студентов от группы
+                      ежемесячно)
+                      <DocxP>
+                        Студенты{" "}
+                        <FormItemInput
+                          name="text_li_4_2_2_idx0"
+                          type="text"
+                          placeholder="Студенты"
+                        />{" "}
+                        являются членами сборной команды
+                      </DocxP>
+                    </li>
+                  </DocxOl>
+                </li>
+                <li>
+                  Участие в общественно-значимых мероприятиях (демонстрации, Форумы, фестивали и
+                  пр.)
+                  <DocxOl className={styles.innerOl}>
+                    <li>
+                      Кол-во студентов, участвующих в мероприятиях
+                      <DocxP>
+                        Студенты группы <b>[Группа из оглавления]</b> принимали участие в:{" "}
+                        <FormItemInput
+                          name="text_li_4_3_1_idx0"
+                          type="text"
+                          placeholder="Название мероприятия"
+                        />
+                      </DocxP>
+                    </li>
+                  </DocxOl>
+                </li>
+                <li>
+                  Организация мероприятий, направленных на профилактику социально-негативных явлений
+                  в студенческой среде с участием приглашенных специалистов
+                  <DocxOl className={styles.innerOl}>
+                    Кол-во студентов, прошедших тестирование на употребление наркотических веществ
+                    <DocxP>
+                      В <FormItemInput name="text_li_4_4_1_idx0" type="text" placeholder="Месяц" />{" "}
+                      тестирование не проводилось
+                    </DocxP>
+                  </DocxOl>
+                </li>
+                <li>
+                  Организация и проведение встреч со студентами, проживающих в общежитиях
+                  <DocxOl className={styles.innerOl}>
+                    Кол-во встреч
+                    <DocxP>
+                      В <FormItemInput name="text_li_4_5_1_idx0" type="text" placeholder="Месяц" />{" "}
+                      встречи не проводилось
+                    </DocxP>
                   </DocxOl>
                 </li>
               </DocxOl>

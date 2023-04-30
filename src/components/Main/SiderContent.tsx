@@ -1,20 +1,27 @@
 import generateDocument from "@/utils/documentGenerator";
 import getItemAntD, { MenuItem } from "@/utils/getItemAntD";
-import { SaveOutlined } from "@ant-design/icons";
+import { FileAddOutlined, SaveOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 import { useContext } from "react";
 import { MainContextValue } from "./MainContext";
 
 const SiderContent = () => {
-  const {submitByRef} = useContext(MainContextValue)
+  const {submitByRef, uploadExcel} = useContext(MainContextValue)
 
   const items: MenuItem[] = [
+    
     getItemAntD(
-      "Сохранить",
+      "Добавить excel файл",
       "1",
+      uploadExcel,
+      <FileAddOutlined />
+    ),getItemAntD(
+      "Сохранить",
+      "2",
       submitByRef,
       <SaveOutlined />
     ),
+    
   ];
   return (
     <>
