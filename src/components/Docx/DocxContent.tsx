@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Form } from "antd";
 import { MainContextValue } from "../Main/MainContext";
 
@@ -6,18 +6,36 @@ import styles from "./DocxContent.module.scss";
 import FormItemInput from "./FormItemInput";
 import DocxP from "./DocxP";
 import DocxOl from "./DocxOl";
+import { IContentData } from "@/interfaces";
 
 const DocxContent = () => {
-  const { formRef, onSubmit } = useContext(MainContextValue);
+  const { formRef, sheetData, onSubmit } = useContext(MainContextValue);
+  const [data, setData] = useState<IContentData>();
+  const [selectedGroup, setSelectedGroup] = useState<string>("");
+
+  useEffect(() => {
+    if (sheetData) {
+      setData({
+        curators: Array.from(sheetData.curators).map(item => ({value: item, label: item})),
+        groups: Array.from(sheetData.groups).map(item => ({value: item, label: item})),
+        studentsByGroup: sheetData.studentsByGroup
+      })
+    }
+  }, [sheetData])
+
+  const onChangeGroup = (e: string) => {
+    setSelectedGroup(e);
+  }
+
   return (
     <div style={{ padding: 24, minHeight: 360, background: "white", fontSize: "14px" }}>
       <Form onFinish={onSubmit} ref={formRef} style={{ maxWidth: 1300, margin: "0 auto" }}>
         <div className={styles.docxHeader}>
           <DocxP className={styles.docxHeaderItem}>
             <span>Отчет куратора</span>
-            <FormItemInput name="fio_cur" type="text" placeholder="ФИО куратора" />
+            <FormItemInput name="fio_cur" type={data?.curators ? "select" : "text"} placeholder="ФИО куратора" selectOptions={data?.curators}/>
             <span>группы</span>
-            <FormItemInput name="group_name" type="text" placeholder="Группа" />
+            <FormItemInput name="group_name" type={data?.groups ? "select" : "text"} placeholder="Группа" selectOptions={data?.groups} onChange={data?.groups && onChangeGroup}/>
             <span>, за период</span>
             <FormItemInput
               name="date_range_MY"
@@ -262,8 +280,10 @@ const DocxContent = () => {
                       общего кол-ва студентов)
                     </li>
                     <li>
-                      <b>Кол-во неаттестованных студентов по итогам промежуточной аттестации (сессия).
-                      Не более 30% от общего кол-ва студентов.</b>
+                      <b>
+                        Кол-во неаттестованных студентов по итогам промежуточной аттестации
+                        (сессия). Не более 30% от общего кол-ва студентов.
+                      </b>
                     </li>
                   </DocxOl>
                 </li>
@@ -356,8 +376,10 @@ const DocxContent = () => {
                         Студенты{" "}
                         <FormItemInput
                           name="text_li_4_2_2_idx0"
-                          type="text"
+                          type={selectedGroup ? "select" :"text"}
                           placeholder="Студенты"
+                          selectOptions={data?.studentsByGroup[selectedGroup]}
+                          selectMode="tags"
                         />{" "}
                         являются членами сборной команды
                       </DocxP>
