@@ -48,6 +48,7 @@ const FormItemInput = (props: Props) => {
         <InputNumber
           placeholder={props.placeholder}
           size="small"
+          type="number"
           style={{ width: 50 }}
           controls={false}
           onChange={props.onChange}

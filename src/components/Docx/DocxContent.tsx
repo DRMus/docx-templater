@@ -38,14 +38,14 @@ const DocxContent = () => {
             <FormItemInput name="group_name" type={data?.groups ? "select" : "text"} placeholder="Группа" selectOptions={data?.groups} onChange={data?.groups && onChangeGroup}/>
             <span>, за период</span>
             <FormItemInput
-              name="date_range_MY"
+              name="dateMY_range"
               type="range"
               placeholder="Период"
               pickerType="month"
             />
             <span>учебного года</span>
             <FormItemInput
-              name="date_range_YY"
+              name="dateYY_range"
               type="range"
               placeholder="Учебный год"
               pickerType="year"
@@ -75,14 +75,14 @@ const DocxContent = () => {
                       />{" "}
                       заполненный за{" "}
                       <FormItemInput
-                        name="date_li_1_1_1_idx1"
+                        name="dateMY_li_1_1_1_idx1"
                         type="date"
                         placeholder="Учебный год"
                         pickerType="month"
                       />{" "}
                       отчет о работе куратора, а также план работ на{" "}
                       <FormItemInput
-                        name="date_li_1_1_1_idx2"
+                        name="dateMY_li_1_1_1_idx2"
                         type="date"
                         placeholder="Учебный год"
                         pickerType="month"
@@ -97,7 +97,7 @@ const DocxContent = () => {
                       />{" "}
                       подписанный план работ на{" "}
                       <FormItemInput
-                        name="date_li_1_1_1_idx4"
+                        name="dateMY_li_1_1_1_idx4"
                         type="date"
                         placeholder="Учебный год"
                         pickerType="month"
@@ -120,7 +120,7 @@ const DocxContent = () => {
                         />{" "}
                         - подготовка плана работы с группами на{" "}
                         <FormItemInput
-                          name="date_li_1_2_1_idx1"
+                          name="dateMY_li_1_2_1_idx1"
                           type="date"
                           placeholder="Учебный год"
                           pickerType="month"
@@ -129,7 +129,7 @@ const DocxContent = () => {
                       <DocxP>
                         План на{" "}
                         <FormItemInput
-                          name="date_li_1_2_1_idx2"
+                          name="dateMY_li_1_2_1_idx2"
                           type="date"
                           placeholder="Учебный год"
                           pickerType="month"
@@ -375,7 +375,7 @@ const DocxContent = () => {
                       <DocxP>
                         Студенты{" "}
                         <FormItemInput
-                          name="text_li_4_2_2_idx0"
+                          name="textTags_li_4_2_2_idx0"
                           type={selectedGroup ? "select" :"text"}
                           placeholder="Студенты"
                           selectOptions={data?.studentsByGroup[selectedGroup]}
