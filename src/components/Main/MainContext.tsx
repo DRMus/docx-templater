@@ -40,6 +40,10 @@ const MainContextProvider = ({ children }: Props) => {
 
   const onSubmit = (formData: any) => {
     Object.keys(formData).forEach((key) => {
+      if (!formData[key]) {
+        formData[key] = "<b>NULL</b>"
+        return
+      }
       let format = "";
       if (key.indexOf("date") === 0) {
         format = "DD.MM.YYYY";
@@ -55,7 +59,7 @@ const MainContextProvider = ({ children }: Props) => {
         formData[key] = formData[key].join(", ")
       }
 
-      if (!format || !formData[key]) {
+      if (!format) {
         return;
       }
       try {

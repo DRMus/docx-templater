@@ -16,26 +16,48 @@ const DocxContent = () => {
   useEffect(() => {
     if (sheetData) {
       setData({
-        curators: Array.from(sheetData.curators).map(item => ({value: item, label: item})),
-        groups: Array.from(sheetData.groups).map(item => ({value: item, label: item})),
-        studentsByGroup: sheetData.studentsByGroup
-      })
+        curators: Array.from(sheetData.curators).map((item) => ({ value: item, label: item })),
+        groups: Array.from(sheetData.groups).map((item) => ({ value: item, label: item })),
+        studentsByGroup: sheetData.studentsByGroup,
+      });
     }
-  }, [sheetData])
+  }, [sheetData]);
 
   const onChangeGroup = (e: string) => {
     setSelectedGroup(e);
-  }
+  };
 
   return (
-    <div style={{ padding: 24, minHeight: 360, background: "white", fontSize: "14px" }}>
-      <Form onFinish={onSubmit} ref={formRef} style={{ maxWidth: 1300, margin: "0 auto" }}>
+    <div style={{ minHeight: 360 }}>
+      <Form
+        onFinish={onSubmit}
+        ref={formRef}
+        style={{
+          maxWidth: 1300,
+          margin: "0 auto",
+          background: "white",
+          fontSize: "14px",
+          boxShadow: "0 0 7px 3px #00000030",
+          padding: 24,
+        }}
+      >
         <div className={styles.docxHeader}>
           <DocxP className={styles.docxHeaderItem}>
             <span>Отчет куратора</span>
-            <FormItemInput name="fio_cur" type={data?.curators ? "select" : "text"} placeholder="ФИО куратора" selectOptions={data?.curators}/>
+            <FormItemInput
+              name="fio_cur"
+              type={data?.curators ? "select" : "text"}
+              placeholder="ФИО куратора"
+              selectOptions={data?.curators}
+            />
             <span>группы</span>
-            <FormItemInput name="group_name" type={data?.groups ? "select" : "text"} placeholder="Группа" selectOptions={data?.groups} onChange={data?.groups && onChangeGroup}/>
+            <FormItemInput
+              name="group_name"
+              type={data?.groups ? "select" : "text"}
+              placeholder="Группа"
+              selectOptions={data?.groups}
+              onChange={data?.groups && onChangeGroup}
+            />
             <span>, за период</span>
             <FormItemInput
               name="dateMY_range"
@@ -376,7 +398,7 @@ const DocxContent = () => {
                         Студенты{" "}
                         <FormItemInput
                           name="textTags_li_4_2_2_idx0"
-                          type={selectedGroup ? "select" :"text"}
+                          type={selectedGroup ? "select" : "text"}
                           placeholder="Студенты"
                           selectOptions={data?.studentsByGroup[selectedGroup]}
                           selectMode="tags"

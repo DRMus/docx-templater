@@ -21,7 +21,7 @@ const MainView = () => {
         <Sider
           collapsible
           collapsed={collapsed}
-          width={150}
+          width={220}
           breakpoint="lg"
           collapsedWidth={"0"}
           onBreakpoint={(broken) => {
